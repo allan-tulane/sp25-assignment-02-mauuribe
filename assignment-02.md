@@ -1,6 +1,6 @@
 # CMPS 2200 Assignment 2
 
-**Name:**_________________________
+**Name:** Mauricio Uribe
 
 In this assignment we'll work on applying the methods we've learned to analyze recurrences, and also see their behavior
 in practice. As with previous
@@ -16,7 +16,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 
 * $W(n)=2W(n/3)+1$
 .  
-.  
+.  W(n) = O(n^log(3)2)
 . 
 .  
 . 
@@ -26,7 +26,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=5W(n/4)+n$
 .  
 .
-.  
+.  W(n) = O(n^log(4)5)
 . 
 .  
 . 
@@ -37,7 +37,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=7W(n/7)+n$
 .  
 . 
-.  
+.  O(n log n)
 .  
 . 
 .  
@@ -46,7 +46,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=9W(n/3)+n^2$
 .  
 .
-. 
+. O(n^2 log n)
 .  
 . 
 .  
@@ -58,7 +58,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 .
 .  
-.  
+.  O(n^3 log n)
 .  
 .  
 . 
@@ -70,7 +70,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 .  
 . 
-.  
+.  O(n^{3/2}\log n
 . 
 .  
 .  
@@ -79,7 +79,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=W(n-1)+2$
 .  
 .  
-. 
+. O(n)
 .  
 . 
 .  
@@ -90,7 +90,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 .  
 .  
-.  
+.  O(n^{c+1})
 .  
 . 
 .  
@@ -99,7 +99,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=W(\sqrt{n})+1$
 .  
 .  
-.  
+.  O(log(log n))
 .  
 .  
 . 
@@ -127,10 +127,11 @@ Suppose that for a given task you are choosing between the following three algor
     Which algorithm would you choose?
 
 
+.  Algorithm A runs in polynomial time, growing on the order of approximately n^2.32
+. Algorithm B has exponential growth. Each increase in n doubles the work (approximately), making it infeasible for large n. growing roughly as 2^n
+.  lgorithm C’s running time is quasi-quadratic, essentially n^2 times a logarithmic factor. It grows a bit faster than quadratic time but slower than any n^c with c >2. n other words, Algorithm C runs on the order of n^2log n.
 .  
-.  
-.  
-.  
+. For very large input sizes, Algorithm C is the best choice due to its lowest asymptotic growth rate. It will scale better than Algorithm A and vastly better than Algorithm B as n grows. Algorithm A is a reasonable second choice (polynomial time, though slightly higher degree), whereas Algorithm B should be avoided for large n because of its exponential running time. 
 . 
 . 
 
