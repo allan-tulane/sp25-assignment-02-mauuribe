@@ -167,7 +167,7 @@ def parens_match_dc_helper(mylist):
     ###TODO
     # Base cases
     if len(mylist) == 0:
-        return [0,0]
+        return (0,0)
     elif len(mylist) == 1:
         if mylist[0] == '(':
             return (0, 1) # one unmatched (
