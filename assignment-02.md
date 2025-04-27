@@ -16,9 +16,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 
 * $W(n)=2W(n/3)+1$
 .  
-.  W(n) = O(n^log(3)2)
-. 
-.  
+.  Each split creates two nodes of size n/3. The depth is log3(n), and each level does constant work. Since work doubles every level, it is leaf-dominated. Thus, W = O(n^(log3(2))).
 . 
 .  
 . 
@@ -26,7 +24,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=5W(n/4)+n$
 .  
 .
-.  W(n) = O(n^log(4)5)
+. Since (5/4)^log(n) grows faster than n, it is leaf-dominated. Therefore, W = O(n^(log4(5))).
 . 
 .  
 . 
@@ -37,7 +35,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=7W(n/7)+n$
 .  
 . 
-.  O(n log n)
+. Since (7/7)n = n, the work is balanced. Each level has O(n) work with log n levels. Thus, W = O(n log n).
 .  
 . 
 .  
@@ -46,7 +44,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=9W(n/3)+n^2$
 .  
 .
-. O(n^2 log n)
+. Root work is n^2. Each child work is (n/3)^2. Since 9*(n/3)^2 = n^2, the work is balanced across log3(n) levels. Thus, W = O(n^2 log n).
 .  
 . 
 .  
@@ -58,7 +56,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 .
 .  
-.  O(n^3 log n)
+.  Each leaf does n^3 work, and the root also does n^3 work. Therefore, the work is balanced with O(log n) levels. Thus, W = O(n^3 log n).
 .  
 .  
 . 
@@ -70,8 +68,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 .  
 . 
-.  O(n^{3/2}\log n
-. 
+.  The root n^(3/2) log n dominates the total work because leaves shrink faster. Thus, W = O(n^(3/2) log n).
 .  
 .  
 .  
@@ -79,7 +76,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=W(n-1)+2$
 .  
 .  
-. O(n)
+. At each step, 2 units of work are done, so W = O(n).
 .  
 . 
 .  
@@ -90,7 +87,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 .  
 .  
-.  O(n^{c+1})
+.  At each step, n^c work is done, so total work sums to O(n^(c+1)).
 .  
 . 
 .  
@@ -99,7 +96,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 * $W(n)=W(\sqrt{n})+1$
 .  
 .  
-.  O(log(log n))
+.  Since the size shrinks by square root each time, the depth is log log n, so the total work is O(log log n).
 .  
 .  
 . 
@@ -129,7 +126,7 @@ Suppose that for a given task you are choosing between the following three algor
 
 .  Algorithm A runs in polynomial time, growing on the order of approximately n^2.32
 . Algorithm B has exponential growth. Each increase in n doubles the work (approximately), making it infeasible for large n. growing roughly as 2^n
-.  lgorithm C’s running time is quasi-quadratic, essentially n^2 times a logarithmic factor. It grows a bit faster than quadratic time but slower than any n^c with c >2. n other words, Algorithm C runs on the order of n^2log n.
+.  Algorithm C’s running time is essentially n^2 times a logarithmic factor. It grows a bit faster than quadratic time but slower than any n^c with c >2. n other words, Algorithm C runs on the order of n^2log n.
 .  
 . For very large input sizes, Algorithm C is the best choice due to its lowest asymptotic growth rate. It will scale better than Algorithm A and vastly better than Algorithm B as n grows. Algorithm A is a reasonable second choice (polynomial time, though slightly higher degree), whereas Algorithm B should be avoided for large n because of its exponential running time. 
 . 
@@ -161,7 +158,8 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **3b.** What are the recurrences for the Work and Span of this solution? What are their Big Oh solutions?
 
-**enter answer here**
+The work satisfies the recurrence W(n) = W(n-1) + O(1), and the span satisfies S(n) = S(n-1) + O(1).
+Thus, both work and span are O(n).
 
 .  
 . 
@@ -177,7 +175,7 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **3d.** Assume that any `map`s are done in parallel, and that we use the efficient implementation of `scan` from class. What are the recurrences for the Work and Span of this solution? 
 
-**enter answer here**
+The work is W(n) = O(n), and the span is S(n) = O(log n).
 
 .  
 .  
@@ -198,7 +196,8 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **3f.** Assuming any recursive calls are done in parallel, what are the recurrences for the Work and Span of this solution? What are their Big Oh solutions?
 
-**enter answer here**
+The work satisfies the recurrence W(n) = 2W(n/2) + O(1), and the span satisfies S(n) = S(n/2) + O(1).
+Solving the work recurrence gives W(n) = O(n), and solving the span recurrence gives S(n) = O(log n).
 
 .  
 . 
