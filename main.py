@@ -53,11 +53,27 @@ def parens_update(current_output, next_input):
         return current_output
     ###
 
+def iterate(f, x, a):
+    if len(a) == 0:
+        return x
+    else:
+        return iterate(f, f(x, a[0]), a[1:])
 
+
+def reduce(f, id_, a):
+    if len(a) == 0:
+        return id_
+    elif len(a) == 1:
+        return f(id_, a[0])
+    else:
+        return f(reduce(f, id_, a[:len(a)//2]), 
+                reduce(f, id_, a[len(a)//2:]))
 
 
 
 #### Scan solution
+def plus(x, y):
+    return x + y
 
 def parens_match_scan(mylist):
     """
@@ -169,5 +185,4 @@ def parens_match_dc_helper(mylist):
     else:
         return (i + k - j, l)
     ###
-    
-
+   
